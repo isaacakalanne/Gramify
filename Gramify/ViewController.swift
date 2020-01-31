@@ -12,12 +12,13 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        
         let url = URL(string: "https://api.imgur.com/3/album/B0fnjzW/images")
         let networkProcessor = NetworkProcessor(url: url!)
         networkProcessor.downloadJSONFromURL { (jsonDictionary) in
-            
+            print(jsonDictionary)
         }
+        
     }
 
 }
