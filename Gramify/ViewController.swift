@@ -20,7 +20,7 @@ class ViewController: UIViewController {
             if let listOfImages = jsonDictionary?["data"] as? Array<Any> {
                 let imageData = listOfImages[0] as? [String : Any]
                 let imgurImage = ImgurImage(imageDictionary: imageData!)
-                print(imgurImage.link!)
+                print(imgurImage.dateTime!)
             }
             
         }
