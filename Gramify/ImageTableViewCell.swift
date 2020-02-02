@@ -10,6 +10,15 @@ import UIKit
 
 class ImageTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var imagePreview: UIImageView!
+    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var widthLabel: UILabel!
+    @IBOutlet weak var heightLabel: UILabel!
+    @IBOutlet weak var uploadDateLabel: UILabel!
+    @IBOutlet weak var uploadTimeLabel: UILabel!
+    @IBOutlet weak var viewsLabel: UILabel!
+    
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

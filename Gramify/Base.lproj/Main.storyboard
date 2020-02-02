@@ -70,6 +70,15 @@
                                         </label>
                                     </subviews>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="heightLabel" destination="QtZ-EB-jXc" id="q0O-ne-eil"/>
+                                    <outlet property="imagePreview" destination="pIL-Ef-1b9" id="TSR-3a-8Uz"/>
+                                    <outlet property="titleLabel" destination="Bpn-ST-bRV" id="6mf-dZ-SYu"/>
+                                    <outlet property="uploadDateLabel" destination="aWV-hp-dTk" id="5cI-9N-4Sv"/>
+                                    <outlet property="uploadTimeLabel" destination="tdR-nS-LSK" id="MB0-Fg-A7V"/>
+                                    <outlet property="viewsLabel" destination="Q9z-vh-TCv" id="Duv-w1-KfL"/>
+                                    <outlet property="widthLabel" destination="bTU-tx-fcy" id="CYr-F3-pnW"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
