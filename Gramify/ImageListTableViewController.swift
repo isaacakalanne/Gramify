@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  ImageListTableViewController.swift
 //  Gramify
 //
 //  Created by Isaac Akalanne on 29/01/2020.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class ImageListTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
