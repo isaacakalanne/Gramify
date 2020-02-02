@@ -9,22 +9,49 @@
 import UIKit
 
 class ImageListTableViewController: UITableViewController {
+    
+    var images = [ImgurImage]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let url = URL(string: "https://api.imgur.com/3/album/B0fnjzW/images")
-        let networkProcessor = NetworkProcessor(url: url!)
+        let urlString = "https://api.imgur.com/3/album/B0fnjzW/images"
+        images = getImagesFromUrlString(urlString)
+        
+    }
+    
+    func getImagesFromUrlString(_ urlString: String) -> [ImgurImage] {
+        
+        var images = [ImgurImage]()
+        let url = URL(string: urlString)!
+        let networkProcessor = NetworkProcessor(url: url)
+        
         networkProcessor.downloadJSONFromURL { (jsonDictionary) in
             
             if let listOfImages = jsonDictionary?["data"] as? Array<Any> {
-                let imageData = listOfImages[0] as? [String : Any]
-                let imgurImage = ImgurImage(imageDictionary: imageData!)
-                print(imgurImage.dateTime!)
+                
+                for image in listOfImages {
+                    let imageData = image as? [String : Any]
+                    let imgurImage = ImgurImage(imageDictionary: imageData!)
+                    images += [imgurImage]
+                }
+                
             }
             
         }
-        
+        return images
     }
+    
+//    override func numberOfSections(in tableView: UITableView) -> Int {
+//
+//    }
+//
+//    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+//
+//    }
+//
+//    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+//
+//    }
 
 }
