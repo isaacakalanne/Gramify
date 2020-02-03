@@ -8,14 +8,15 @@
 
 import UIKit
 
-class ImageListTableViewController: UITableViewController {
+class ImageListTableViewController: UITableViewController  {
     
     var images = [ImgurImage]()
+    var imageCache = Dictionary<String, UIImage>()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let urlString = "https://api.imgur.com/3/album/B0fnjzW/images"
+        let urlString = "https://api.imgur.com/3/album/psT5Lsh/images"
         
         createListOfImagesFromUrlString(urlString) { imageList -> Void in
             
@@ -62,7 +63,7 @@ class ImageListTableViewController: UITableViewController {
         let cellIdentifier = "ImageTableViewCell"
         let image = images[indexPath.row]
         
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as? ImageTableViewCell  else {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as? ImageTableViewCell else {
             fatalError("The dequeued cell is not an instance of ImageTableViewCell.")
         }
         
@@ -74,7 +75,31 @@ class ImageListTableViewController: UITableViewController {
         cell.uploadTimeLabel.text = image.dateTime
         cell.viewsLabel.text = "Views: \(image.views ?? 0)"
         
+        cell.imagePreview.image = nil
+        if let cachedImage = imageCache["imageIndex: \(indexPath.row)"] {
+            cell.imagePreview.image = cachedImage
+        } else {
+            
+            getDataFromUrl(url: image.link!) { data in
+                
+                DispatchQueue.main.async {
+                    let imageFromData = UIImage(data: data!)
+                    self.imageCache["imageIndex: \(indexPath.row)"] = imageFromData
+                    cell.imagePreview.image = imageFromData
+                }
+                
+            }
+            
+        }
+        
         return cell
+    }
+    
+    func getDataFromUrl(url:String, completion: @escaping ((_ data: Data?) -> Void)) {
+        
+        URLSession.shared.dataTask(with: NSURL(string: url)! as URL) { (data, response, error) in
+            completion(data)
+        }.resume()
     }
 
 }

@@ -19,7 +19,7 @@ class ImgurImage {
     
     struct ImgurKeys {
         static let views = "views"
-        static let title = "title"
+        static let title = "description"
         static let dateTime = "datetime"
         static let link = "link"
         static let width = "width"
