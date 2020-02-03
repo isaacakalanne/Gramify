@@ -10,7 +10,7 @@ import Foundation
 
 class ImgurImage {
     
-    let id: String?
+    let views: Int?
     let title: String?
     let dateTime: String?
     let link: String?
@@ -18,7 +18,7 @@ class ImgurImage {
     let height: Int?
     
     struct ImgurKeys {
-        static let id = "id"
+        static let views = "views"
         static let title = "title"
         static let dateTime = "datetime"
         static let link = "link"
@@ -27,7 +27,7 @@ class ImgurImage {
     }
     
     init(imageDictionary: [String : Any]) {
-        id = imageDictionary[ImgurKeys.id] as? String
+        views = imageDictionary[ImgurKeys.views] as? Int
         title = imageDictionary[ImgurKeys.title] as? String
         link = imageDictionary[ImgurKeys.link] as? String
         width = imageDictionary[ImgurKeys.width] as? Int
