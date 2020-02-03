@@ -12,18 +12,12 @@ class NetworkProcessor {
     
     lazy var configuration: URLSessionConfiguration = URLSessionConfiguration.default
     lazy var session: URLSession = URLSession(configuration: self.configuration)
-
-    let url: URL
-
-    init(url: URL) {
-        self.url = url
-    }
     
     typealias JSONDictionaryHandler = (([String : Any]?) -> Void)
     
-    func downloadJSONFromURL(_ completion: @escaping JSONDictionaryHandler) {
+    func downloadJSONDictionary(fromURL url: URL, completion: @escaping JSONDictionaryHandler) {
         
-        var request = URLRequest(url: self.url)
+        var request = URLRequest(url: url)
         request.setValue("Client-ID ab89787499de1c4", forHTTPHeaderField: "Authorization")
         
         let dataTask = session.dataTask(with: request) { (data, response, error) in

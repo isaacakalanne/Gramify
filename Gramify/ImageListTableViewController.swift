@@ -10,7 +10,7 @@ import UIKit
 
 class ImageListTableViewController: UITableViewController  {
     
-    var images = [ImgurImage]()
+    var listOfImgurImages = [ImgurImage]()
     var imageCache = Dictionary<String, UIImage>()
 
     override func viewDidLoad() {
@@ -18,9 +18,9 @@ class ImageListTableViewController: UITableViewController  {
         
         let urlString = "https://api.imgur.com/3/album/psT5Lsh/images"
         
-        createListOfImagesFromUrlString(urlString) { imageList -> Void in
+        createArrayOfImgurImages(fromUrl: urlString) { array -> Void in
             
-            self.images.append(contentsOf: imageList)
+            self.listOfImgurImages = array
             
             DispatchQueue.main.async {
                 self.tableView.reloadData()
@@ -29,25 +29,33 @@ class ImageListTableViewController: UITableViewController  {
         }
     }
     
-    func createListOfImagesFromUrlString(_ urlString: String, completion: @escaping ([ImgurImage]) -> Void) {
+    func createArrayOfImgurImages(fromUrl urlString: String, completion: @escaping ([ImgurImage]) -> Void) {
+        
+        let url = URL(string: urlString)!
+        let networkProcessor = NetworkProcessor()
+        
+        networkProcessor.downloadJSONDictionary(fromURL: url, completion: { (jsonDictionary) in
+            
+            if let arrayOfJSONData = jsonDictionary?["data"] as? Array<Any> {
+                
+                let imgurImages = self.convertJSONDataToImgurImages(jsonData: arrayOfJSONData)
+                
+                completion(imgurImages)
+            }
+            
+        })
+    }
+    
+    func convertJSONDataToImgurImages(jsonData listOfImages : Array<Any>) -> [ImgurImage] {
         
         var images = [ImgurImage]()
-        let url = URL(string: urlString)!
-        let networkProcessor = NetworkProcessor(url: url)
         
-        networkProcessor.downloadJSONFromURL { (jsonDictionary) in
-            
-            if let listOfImages = jsonDictionary?["data"] as? Array<Any> {
-                
-                for image in listOfImages {
-                    let imageData = image as? [String : Any]
-                    let imgurImage = ImgurImage(imageDictionary: imageData!)
-                    images.append(imgurImage)
-                }
-                
-                completion(images)
-            }
+        for image in listOfImages {
+            let imageData = image as? [String : Any]
+            let imgurImage = ImgurImage(imageDictionary: imageData!)
+            images.append(imgurImage)
         }
+        return images
     }
     
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -55,13 +63,13 @@ class ImageListTableViewController: UITableViewController  {
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return images.count
+        return listOfImgurImages.count
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cellIdentifier = "ImageTableViewCell"
-        let image = images[indexPath.row]
+        let image = listOfImgurImages[indexPath.row]
         
         guard let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as? ImageTableViewCell else {
             fatalError("The dequeued cell is not an instance of ImageTableViewCell.")
