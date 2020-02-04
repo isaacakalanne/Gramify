@@ -68,9 +68,18 @@
                                             <rect key="frame" x="0.0" y="-2" width="156" height="184"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         </imageView>
+                                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="k9S-Ze-mLi">
+                                            <rect key="frame" x="0.0" y="0.0" width="156" height="180"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <color key="backgroundColor" white="1" alpha="0.5" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <state key="normal" title="Gramify">
+                                                <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            </state>
+                                        </button>
                                     </subviews>
                                 </tableViewCellContentView>
                                 <connections>
+                                    <outlet property="editButton" destination="k9S-Ze-mLi" id="G6M-vW-CnZ"/>
                                     <outlet property="heightLabel" destination="QtZ-EB-jXc" id="q0O-ne-eil"/>
                                     <outlet property="imagePreview" destination="pIL-Ef-1b9" id="TSR-3a-8Uz"/>
                                     <outlet property="titleLabel" destination="Bpn-ST-bRV" id="6mf-dZ-SYu"/>

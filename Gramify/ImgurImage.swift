@@ -12,7 +12,8 @@ class ImgurImage {
     
     let views: Int?
     let title: String?
-    let dateTime: String?
+    let uploadDate: String?
+    let uploadTime: String?
     let link: String?
     let width: Int?
     let height: Int?
@@ -34,12 +35,16 @@ class ImgurImage {
         height = imageDictionary[ImgurKeys.height] as? Int
         
         let unixDateTime = imageDictionary[ImgurKeys.dateTime] as? Double
-        let date = Date(timeIntervalSince1970: unixDateTime!)
+        let dateTime = Date(timeIntervalSince1970: unixDateTime!)
         let dateFormatter = DateFormatter()
-        dateFormatter.timeStyle = .medium
         dateFormatter.dateStyle = .medium
         dateFormatter.timeZone = TimeZone(secondsFromGMT: 0)
-        dateTime = dateFormatter.string(from: date)
+        uploadDate = dateFormatter.string(from: dateTime)
+        
+        let timeFormatter = DateFormatter()
+        timeFormatter.timeStyle = .medium
+        timeFormatter.timeZone = TimeZone(secondsFromGMT: 0)
+        uploadTime = timeFormatter.string(from: dateTime)
     }
     
 }

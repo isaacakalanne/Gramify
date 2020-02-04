@@ -17,7 +17,7 @@ class ImageTableViewCell: UITableViewCell {
     @IBOutlet weak var uploadDateLabel: UILabel!
     @IBOutlet weak var uploadTimeLabel: UILabel!
     @IBOutlet weak var viewsLabel: UILabel!
-    
+    @IBOutlet weak var editButton: UIButton!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -45,11 +45,13 @@ class ImageTableViewCell: UITableViewCell {
         uploadDateLabel.alpha = 1
         uploadTimeLabel.alpha = 1
         viewsLabel.alpha = 1
+        editButton.alpha = 1
         moveImagePreviewToRight()
     }
     
     func moveImagePreviewToRight() {
         imagePreview.frame = CGRect(x: UIScreen.main.bounds.size.width - imagePreview.frame.size.width, y: 0, width: imagePreview.frame.size.width, height: imagePreview.frame.size.height)
+        editButton.frame = CGRect(x: UIScreen.main.bounds.size.width - imagePreview.frame.size.width, y: 0, width: imagePreview.frame.size.width, height: imagePreview.frame.size.height)
     }
     
     func showDefaultMetadata() {
@@ -59,11 +61,13 @@ class ImageTableViewCell: UITableViewCell {
         uploadDateLabel.alpha = 0
         uploadTimeLabel.alpha = 0
         viewsLabel.alpha = 0
+        editButton.alpha = 0
         moveImagePreviewToLeft()
     }
     
     func moveImagePreviewToLeft() {
         imagePreview.frame = CGRect(x: 0, y: 0, width: imagePreview.frame.size.width, height: imagePreview.frame.size.height)
+        editButton.frame = CGRect(x: 0, y: 0, width: imagePreview.frame.size.width, height: imagePreview.frame.size.height)
     }
 
 }

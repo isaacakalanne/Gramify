@@ -81,9 +81,12 @@ class ImageListTableViewController: UITableViewController  {
         cell.widthLabel.text = "Width: \(image.width ?? 0)"
         cell.heightLabel.text = "Height: \(image.height ?? 0)"
         
-        cell.uploadDateLabel.text = image.dateTime
-        cell.uploadTimeLabel.text = image.dateTime
+        cell.uploadDateLabel.text = image.uploadDate
+        cell.uploadTimeLabel.text = image.uploadTime
         cell.viewsLabel.text = "Views: \(image.views ?? 0)"
+        
+        cell.editButton.addTarget(self, action: #selector(editButtonPressed), for: .touchUpInside)
+        cell.editButton.tag = indexPath.row
         
         if let cachedImage = imageCache["imageIndex: \(indexPath.row)"] {
             cell.imagePreview.image = cachedImage
@@ -102,6 +105,10 @@ class ImageListTableViewController: UITableViewController  {
         }
         
         return cell
+    }
+    
+    @objc func editButtonPressed(sender : UIButton) {
+        print("Touched the button! indexPath.row is \(sender.tag)")
     }
     
     override func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
