@@ -12,6 +12,7 @@ class ImageListTableViewController: UITableViewController  {
     
     var listOfImgurImages = [ImgurImage]()
     var imageCache = Dictionary<String, UIImage>()
+    var selectedRow = 0
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -108,7 +109,8 @@ class ImageListTableViewController: UITableViewController  {
     }
     
     @objc func editButtonPressed(sender : UIButton) {
-        print("Touched the button! indexPath.row is \(sender.tag)")
+        selectedRow = sender.tag
+        self.performSegue(withIdentifier: "openImageEditorSegue",sender: self)
     }
     
     override func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
@@ -128,4 +130,9 @@ class ImageListTableViewController: UITableViewController  {
         }.resume()
     }
 
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let destination = segue.destination as? ImageEditorViewController
+        destination?.image = listOfImgurImages[selectedRow]
+    }
+    
 }

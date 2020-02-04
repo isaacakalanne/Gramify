@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15400" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="yfN-6D-0ej">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15400" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="mqF-Sq-cgY">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15404"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Image List Table View Controller-->
+        <!--Library-->
         <scene sceneID="Nhn-Gi-Ihg">
             <objects>
                 <tableViewController id="yfN-6D-0ej" customClass="ImageListTableViewController" customModule="Gramify" customModuleProvider="target" sceneMemberID="viewController">
@@ -71,7 +72,8 @@
                                         <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="k9S-Ze-mLi">
                                             <rect key="frame" x="0.0" y="0.0" width="156" height="180"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <color key="backgroundColor" white="1" alpha="0.5" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <color key="backgroundColor" white="1" alpha="0.75486438679245282" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <fontDescription key="fontDescription" name="Didot" family="Didot" pointSize="17"/>
                                             <state key="normal" title="Gramify">
                                                 <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
                                             </state>
@@ -95,10 +97,49 @@
                             <outlet property="delegate" destination="yfN-6D-0ej" id="gpD-CI-Dn5"/>
                         </connections>
                     </tableView>
+                    <navigationItem key="navigationItem" title="Library" id="vt0-NM-8N9"/>
+                    <connections>
+                        <segue destination="41r-zQ-G5s" kind="show" identifier="openImageEditorSegue" id="gbU-LI-WU4"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UWT-Sv-1VA" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="269.56521739130437" y="737.94642857142856"/>
+            <point key="canvasLocation" x="-316" y="291"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="dZb-5C-xKo">
+            <objects>
+                <navigationController id="mqF-Sq-cgY" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="XXx-MO-6xM">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <textAttributes key="titleTextAttributes">
+                            <fontDescription key="fontDescription" name="Didot" family="Didot" pointSize="17"/>
+                        </textAttributes>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="yfN-6D-0ej" kind="relationship" relationship="rootViewController" id="0ax-LD-d6l"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="7iZ-x1-mIO" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1258" y="291"/>
+        </scene>
+        <!--Editor-->
+        <scene sceneID="U0G-0L-vtr">
+            <objects>
+                <viewController id="41r-zQ-G5s" customClass="ImageEditorViewController" customModule="Gramify" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="tYb-mt-glw">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="2vU-SG-2Ut"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Editor" id="QB3-TM-bNY"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="eM0-kc-yhe" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="683" y="291"/>
         </scene>
     </scenes>
 </document>
