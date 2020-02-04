@@ -132,14 +132,77 @@
                     <view key="view" contentMode="scaleToFill" id="tYb-mt-glw">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="7FK-ei-WP6">
+                                <rect key="frame" x="20" y="197" width="374" height="350"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="350" id="pbQ-TJ-vyr"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="GRAMIFY" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ITy-OL-ZQR">
+                                <rect key="frame" x="133.5" y="124" width="147" height="38"/>
+                                <fontDescription key="fontDescription" name="Didot" family="Didot" pointSize="30"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Fade Direction" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Eez-HC-4fJ">
+                                <rect key="frame" x="150" y="695" width="115" height="22"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="Didot" family="Didot" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="u1h-F9-67g">
+                                <rect key="frame" x="20" y="609" width="374" height="78"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <viewLayoutGuide key="contentLayoutGuide" id="X6j-qu-w0R"/>
+                                <viewLayoutGuide key="frameLayoutGuide" id="vzU-I7-D1b"/>
+                            </scrollView>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="OQf-dj-zNv">
+                                <rect key="frame" x="20" y="726" width="374" height="78"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <viewLayoutGuide key="contentLayoutGuide" id="FXC-Vr-png"/>
+                                <viewLayoutGuide key="frameLayoutGuide" id="fTc-YR-7WC"/>
+                            </scrollView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="s39-ws-MvP">
+                                <rect key="frame" x="148" y="830" width="118" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="Didot" family="Didot" pointSize="17"/>
+                                <state key="normal" title="Share to Imgur">
+                                    <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                </state>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Filter" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sUZ-UJ-WB0">
+                                <rect key="frame" x="186" y="579" width="42" height="22"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="Didot" family="Didot" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="7FK-ei-WP6" firstAttribute="top" secondItem="ITy-OL-ZQR" secondAttribute="bottom" constant="35" id="LKl-Q5-5A9"/>
+                            <constraint firstItem="7FK-ei-WP6" firstAttribute="centerX" secondItem="tYb-mt-glw" secondAttribute="centerX" id="QB4-4j-S7e"/>
+                            <constraint firstItem="ITy-OL-ZQR" firstAttribute="top" secondItem="2vU-SG-2Ut" secondAttribute="top" constant="36" id="RxD-iq-2v0"/>
+                            <constraint firstItem="ITy-OL-ZQR" firstAttribute="centerX" secondItem="tYb-mt-glw" secondAttribute="centerX" id="bDY-Kj-rNS"/>
+                            <constraint firstItem="7FK-ei-WP6" firstAttribute="leading" secondItem="2vU-SG-2Ut" secondAttribute="leading" constant="20" id="clx-vM-blQ"/>
+                            <constraint firstItem="7FK-ei-WP6" firstAttribute="centerX" secondItem="tYb-mt-glw" secondAttribute="centerX" id="il3-ge-PsM"/>
+                            <constraint firstItem="2vU-SG-2Ut" firstAttribute="trailing" secondItem="7FK-ei-WP6" secondAttribute="trailing" constant="20" id="oGs-dN-gQY"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="2vU-SG-2Ut"/>
                     </view>
                     <navigationItem key="navigationItem" title="Editor" id="QB3-TM-bNY"/>
+                    <connections>
+                        <outlet property="fadeTypeScrollView" destination="OQf-dj-zNv" id="zOm-Jc-rPn"/>
+                        <outlet property="filtersScrollView" destination="u1h-F9-67g" id="ttr-zo-xv0"/>
+                        <outlet property="imagePreview" destination="7FK-ei-WP6" id="dwf-eV-Ijw"/>
+                        <outlet property="shareButton" destination="s39-ws-MvP" id="YsL-zn-kdF"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eM0-kc-yhe" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="683" y="291"/>
+            <point key="canvasLocation" x="682.60869565217399" y="290.625"/>
         </scene>
     </scenes>
 </document>

@@ -10,6 +10,11 @@ import UIKit
 
 class ImageEditorViewController: UIViewController {
     
+    @IBOutlet weak var imagePreview: UIImageView!
+    @IBOutlet weak var filtersScrollView: UIScrollView!
+    @IBOutlet weak var fadeTypeScrollView: UIScrollView!
+    @IBOutlet weak var shareButton: UIButton!
+    
     lazy var image = ImgurImage(imageDictionary: [String : Any]())
 
     override func viewDidLoad() {
