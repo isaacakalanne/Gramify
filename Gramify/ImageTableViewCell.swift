@@ -28,9 +28,13 @@ class ImageTableViewCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
         
         if selected == true {
-            showExtraMetadata()
+            UIView.animate(withDuration: 0.4) {
+                self.showExtraMetadata()
+            }
         } else {
-            showDefaultMetadata()
+            UIView.animate(withDuration: 0.4) {
+                self.showDefaultMetadata()
+            }
         }
     }
     
