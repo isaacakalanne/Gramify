@@ -75,6 +75,8 @@ class ImageListTableViewController: UITableViewController  {
             fatalError("The dequeued cell is not an instance of ImageTableViewCell.")
         }
         
+        cell.selectionStyle = .none
+        
         cell.titleLabel.text = "Title: \(image.title ?? "")"
         cell.widthLabel.text = "Width: \(image.width ?? 0)"
         cell.heightLabel.text = "Height: \(image.height ?? 0)"
@@ -83,7 +85,6 @@ class ImageListTableViewController: UITableViewController  {
         cell.uploadTimeLabel.text = image.dateTime
         cell.viewsLabel.text = "Views: \(image.views ?? 0)"
         
-        cell.imagePreview.image = nil
         if let cachedImage = imageCache["imageIndex: \(indexPath.row)"] {
             cell.imagePreview.image = cachedImage
         } else {
@@ -101,6 +102,16 @@ class ImageListTableViewController: UITableViewController  {
         }
         
         return cell
+    }
+    
+    override func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
+
+        if let indexPathForSelectedRow = tableView.indexPathForSelectedRow,
+            indexPathForSelectedRow == indexPath {
+            tableView.deselectRow(at: indexPath, animated: false)
+            return nil
+        }
+        return indexPath
     }
     
     func getDataFromUrl(url:String, completion: @escaping ((_ data: Data?) -> Void)) {

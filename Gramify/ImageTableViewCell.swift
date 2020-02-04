@@ -26,8 +26,40 @@ class ImageTableViewCell: UITableViewCell {
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
+        
+        if selected == true {
+            showExtraMetadata()
+        } else {
+            showDefaultMetadata()
+        }
+    }
+    
+    func showExtraMetadata() {
+        titleLabel.alpha = 0
+        widthLabel.alpha = 0
+        heightLabel.alpha = 0
+        uploadDateLabel.alpha = 1
+        uploadTimeLabel.alpha = 1
+        viewsLabel.alpha = 1
+        moveImagePreviewToRight()
+    }
+    
+    func moveImagePreviewToRight() {
+        imagePreview.frame = CGRect(x: UIScreen.main.bounds.size.width - imagePreview.frame.size.width, y: 0, width: imagePreview.frame.size.width, height: imagePreview.frame.size.height)
+    }
+    
+    func showDefaultMetadata() {
+        titleLabel.alpha = 1
+        widthLabel.alpha = 1
+        heightLabel.alpha = 1
+        uploadDateLabel.alpha = 0
+        uploadTimeLabel.alpha = 0
+        viewsLabel.alpha = 0
+        moveImagePreviewToLeft()
+    }
+    
+    func moveImagePreviewToLeft() {
+        imagePreview.frame = CGRect(x: 0, y: 0, width: imagePreview.frame.size.width, height: imagePreview.frame.size.height)
     }
 
 }
