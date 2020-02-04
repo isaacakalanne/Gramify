@@ -46,7 +46,16 @@ class ImageTableViewCell: UITableViewCell {
         uploadTimeLabel.alpha = 1
         viewsLabel.alpha = 1
         editButton.alpha = 1
-        moveImagePreviewToRight()
+        moveViewToTheRight(imagePreview)
+        moveViewToTheRight(editButton)
+    }
+    
+    func moveViewToTheRight(_ view : UIView) {
+        view.frame = CGRect(x: UIScreen.main.bounds.size.width - view.frame.size.width, y: 0, width: view.frame.size.width, height: view.frame.size.height)
+    }
+    
+    func moveViewToTheLeft(_ view : UIView) {
+        view.frame = CGRect(x: 0, y: 0, width: view.frame.size.width, height: view.frame.size.height)
     }
     
     func moveImagePreviewToRight() {
@@ -62,7 +71,8 @@ class ImageTableViewCell: UITableViewCell {
         uploadTimeLabel.alpha = 0
         viewsLabel.alpha = 0
         editButton.alpha = 0
-        moveImagePreviewToLeft()
+        moveViewToTheLeft(imagePreview)
+        moveViewToTheLeft(editButton)
     }
     
     func moveImagePreviewToLeft() {

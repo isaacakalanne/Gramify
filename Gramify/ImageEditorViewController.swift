@@ -15,6 +15,7 @@ class ImageEditorViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         print("Title is \(image.title ?? "")")
+        
     }
 
 }

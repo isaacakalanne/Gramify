@@ -41,7 +41,7 @@ class NetworkProcessor {
                 }
                 
             } else {
-                print("Error: \(error?.localizedDescription)") // Try switching '?' to '!' after, as error should never be nil here
+                print("Error: \(error!.localizedDescription)")
             }
         }
         
