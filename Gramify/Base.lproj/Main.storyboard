@@ -151,7 +151,54 @@
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VQf-Va-JJp">
                                         <rect key="frame" x="0.0" y="0.0" width="374" height="78"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BZW-df-4Y5">
+                                                <rect key="frame" x="8" y="8" width="64" height="70"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="64" id="acJ-yQ-aQ9"/>
+                                                </constraints>
+                                                <state key="normal" title="Button" backgroundImage="pinkRosesOriginal"/>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tZk-e1-0G9">
+                                                <rect key="frame" x="87" y="8" width="64" height="70"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="64" id="JBa-LU-YsK"/>
+                                                </constraints>
+                                                <state key="normal" title="Button" backgroundImage="oceanWaveOriginal"/>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Nad-FN-d1M">
+                                                <rect key="frame" x="166" y="8" width="64" height="70"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="64" id="4vo-rU-iRP"/>
+                                                </constraints>
+                                                <state key="normal" title="Button" backgroundImage="fallingLeavesOriginal"/>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jaH-cn-NJc">
+                                                <rect key="frame" x="245" y="8" width="64" height="70"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="64" id="7MO-0B-pQO"/>
+                                                </constraints>
+                                                <state key="normal" title="Button" backgroundImage="nightSkyOriginal"/>
+                                            </button>
+                                        </subviews>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                        <constraints>
+                                            <constraint firstItem="jaH-cn-NJc" firstAttribute="top" secondItem="Nad-FN-d1M" secondAttribute="top" id="8Wf-3G-L6F"/>
+                                            <constraint firstItem="Nad-FN-d1M" firstAttribute="leading" secondItem="tZk-e1-0G9" secondAttribute="trailing" constant="15" id="9s9-g1-vZU" userLabel="Button.leading = Button.trailing + 15"/>
+                                            <constraint firstItem="Nad-FN-d1M" firstAttribute="firstBaseline" secondItem="tZk-e1-0G9" secondAttribute="baseline" id="HZk-g3-99L"/>
+                                            <constraint firstItem="BZW-df-4Y5" firstAttribute="leading" secondItem="VQf-Va-JJp" secondAttribute="leadingMargin" id="SBC-Oq-mvS"/>
+                                            <constraint firstItem="tZk-e1-0G9" firstAttribute="leading" secondItem="BZW-df-4Y5" secondAttribute="trailing" constant="15" id="TY5-6m-Sry"/>
+                                            <constraint firstAttribute="bottom" secondItem="tZk-e1-0G9" secondAttribute="bottom" id="Z08-aw-l2W"/>
+                                            <constraint firstAttribute="bottom" secondItem="Nad-FN-d1M" secondAttribute="bottom" id="bHS-Gt-beA"/>
+                                            <constraint firstItem="Nad-FN-d1M" firstAttribute="top" secondItem="tZk-e1-0G9" secondAttribute="top" id="cdz-iH-aYj"/>
+                                            <constraint firstAttribute="bottom" secondItem="jaH-cn-NJc" secondAttribute="bottom" id="dfV-qQ-wPW"/>
+                                            <constraint firstItem="tZk-e1-0G9" firstAttribute="firstBaseline" secondItem="BZW-df-4Y5" secondAttribute="baseline" id="eHb-K0-WeR"/>
+                                            <constraint firstItem="jaH-cn-NJc" firstAttribute="leading" secondItem="Nad-FN-d1M" secondAttribute="trailing" constant="15" id="lE7-dr-kyF"/>
+                                            <constraint firstItem="tZk-e1-0G9" firstAttribute="top" secondItem="BZW-df-4Y5" secondAttribute="top" id="r0e-wa-dB9"/>
+                                            <constraint firstAttribute="bottom" secondItem="BZW-df-4Y5" secondAttribute="bottom" id="rOc-Xp-N9F"/>
+                                            <constraint firstItem="BZW-df-4Y5" firstAttribute="top" secondItem="VQf-Va-JJp" secondAttribute="topMargin" id="zlK-LA-aaN"/>
+                                            <constraint firstItem="jaH-cn-NJc" firstAttribute="firstBaseline" secondItem="Nad-FN-d1M" secondAttribute="baseline" id="zm5-ft-XXf"/>
+                                        </constraints>
                                     </view>
                                 </subviews>
                                 <constraints>
@@ -171,7 +218,55 @@
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bWW-JU-LiA">
                                         <rect key="frame" x="0.0" y="0.0" width="374" height="78"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9YZ-Yl-lyQ">
+                                                <rect key="frame" x="8" y="8" width="64" height="70"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="64" id="DL0-vz-7vw"/>
+                                                </constraints>
+                                                <state key="normal" title="Button" backgroundImage="pinkRosesBottomLeft"/>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lsp-rn-bEa">
+                                                <rect key="frame" x="87" y="8" width="64" height="70"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="64" id="a4g-iI-yGL"/>
+                                                </constraints>
+                                                <state key="normal" title="Button" backgroundImage="pinkRosesTopLeft"/>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nyA-Mh-F5U">
+                                                <rect key="frame" x="166" y="8" width="64" height="70"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="64" id="wVD-R1-OS0"/>
+                                                </constraints>
+                                                <state key="normal" title="Button" backgroundImage="pinkRosesTopRight"/>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NTk-9s-ZuP">
+                                                <rect key="frame" x="245" y="8" width="64" height="70"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="64" id="cxJ-nP-HWe"/>
+                                                </constraints>
+                                                <state key="normal" title="Button" backgroundImage="pinkRosesBottomRight"/>
+                                            </button>
+                                        </subviews>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="bottom" secondItem="nyA-Mh-F5U" secondAttribute="bottom" id="CQZ-YT-Qid"/>
+                                            <constraint firstItem="nyA-Mh-F5U" firstAttribute="top" secondItem="NTk-9s-ZuP" secondAttribute="top" id="DwB-kw-xx5"/>
+                                            <constraint firstItem="lsp-rn-bEa" firstAttribute="baseline" secondItem="nyA-Mh-F5U" secondAttribute="baseline" id="MTQ-dE-vFr"/>
+                                            <constraint firstAttribute="bottom" secondItem="lsp-rn-bEa" secondAttribute="bottom" id="NG1-ZF-fcT"/>
+                                            <constraint firstItem="nyA-Mh-F5U" firstAttribute="leading" secondItem="lsp-rn-bEa" secondAttribute="trailing" constant="15" id="PVC-SZ-FZk"/>
+                                            <constraint firstAttribute="bottom" secondItem="NTk-9s-ZuP" secondAttribute="bottom" id="RtN-Y0-FPg"/>
+                                            <constraint firstItem="nyA-Mh-F5U" firstAttribute="baseline" secondItem="NTk-9s-ZuP" secondAttribute="firstBaseline" id="S2K-5g-mAG"/>
+                                            <constraint firstItem="9YZ-Yl-lyQ" firstAttribute="baseline" secondItem="lsp-rn-bEa" secondAttribute="firstBaseline" id="SxU-Hk-yoQ"/>
+                                            <constraint firstItem="9YZ-Yl-lyQ" firstAttribute="bottom" secondItem="bWW-JU-LiA" secondAttribute="bottomMargin" constant="8" id="U5X-bF-AGn"/>
+                                            <constraint firstItem="9YZ-Yl-lyQ" firstAttribute="top" secondItem="lsp-rn-bEa" secondAttribute="top" id="cGS-oZ-Ppd"/>
+                                            <constraint firstItem="NTk-9s-ZuP" firstAttribute="baseline" secondItem="nyA-Mh-F5U" secondAttribute="firstBaseline" id="jAx-jj-QYn"/>
+                                            <constraint firstItem="9YZ-Yl-lyQ" firstAttribute="leading" secondItem="bWW-JU-LiA" secondAttribute="leadingMargin" id="jUq-Zh-aLB"/>
+                                            <constraint firstItem="lsp-rn-bEa" firstAttribute="leading" secondItem="9YZ-Yl-lyQ" secondAttribute="trailing" constant="15" id="jYl-0s-Zb3"/>
+                                            <constraint firstItem="NTk-9s-ZuP" firstAttribute="leading" secondItem="nyA-Mh-F5U" secondAttribute="trailing" constant="15" id="mZH-TP-j5t"/>
+                                            <constraint firstItem="lsp-rn-bEa" firstAttribute="top" secondItem="nyA-Mh-F5U" secondAttribute="top" id="sTJ-BL-K9b"/>
+                                            <constraint firstItem="9YZ-Yl-lyQ" firstAttribute="top" secondItem="bWW-JU-LiA" secondAttribute="topMargin" id="ucX-1r-Exi"/>
+                                        </constraints>
                                     </view>
                                 </subviews>
                                 <constraints>
@@ -242,4 +337,14 @@
             <point key="canvasLocation" x="682.60869565217399" y="290.625"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="fallingLeavesOriginal" width="512" height="512"/>
+        <image name="nightSkyOriginal" width="512" height="512"/>
+        <image name="oceanWaveOriginal" width="512" height="512"/>
+        <image name="pinkRosesBottomLeft" width="512" height="512"/>
+        <image name="pinkRosesBottomRight" width="512" height="512"/>
+        <image name="pinkRosesOriginal" width="512" height="512"/>
+        <image name="pinkRosesTopLeft" width="512" height="512"/>
+        <image name="pinkRosesTopRight" width="512" height="512"/>
+    </resources>
 </document>
