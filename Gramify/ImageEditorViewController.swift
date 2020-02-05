@@ -21,6 +21,29 @@ class ImageEditorViewController: UIViewController {
         super.viewDidLoad()
         print("Title is \(image.title ?? "")")
         
+        getData(fromURL: image.link!) { data in
+            
+            DispatchQueue.main.async {
+                
+                let imageFromData = UIImage(data: data!)
+                self.imagePreview.alpha = 0
+                self.imagePreview.image = imageFromData
+                
+                UIView.animate(withDuration: 0.4) {
+                    self.imagePreview.alpha = 1
+                }
+            }
+            
+        }
+        
+    }
+    
+    func getData(fromURL urlString:String, completion: @escaping ((_ data: Data?) -> Void)) {
+        let url = URL(string: urlString)!
+        URLSession.shared.dataTask(with: url) { (data, response, error) in
+            completion(data)
+        }.resume()
+        
     }
 
 }
