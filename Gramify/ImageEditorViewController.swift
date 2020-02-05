@@ -27,11 +27,17 @@ class ImageEditorViewController: UIViewController {
                 
                 let imageFromData = UIImage(data: data!)
                 self.imagePreview.alpha = 0
-                self.imagePreview.image = imageFromData
-                
-                UIView.animate(withDuration: 0.4) {
-                    self.imagePreview.alpha = 1
+                let filterImage = UIImage(named: "oceanWaveOriginal")
+                self.applyFilter(toImage: imageFromData!, withFilterImage: filterImage!) { filteredImage in
+                    
+                    self.imagePreview.image = filteredImage
+                    
+                    UIView.animate(withDuration: 0.4) {
+                        self.imagePreview.alpha = 1
+                    }
+                    
                 }
+                
             }
             
         }
@@ -44,6 +50,18 @@ class ImageEditorViewController: UIViewController {
             completion(data)
         }.resume()
         
+    }
+    
+    func applyFilter(toImage image : UIImage , withFilterImage filterImage : UIImage , completion : @escaping ((_ filteredImage : UIImage) -> Void)) {
+        let originalImage = CIImage(image: image)
+        let filterImage = CIImage(image: filterImage)
+        let filter = CIFilter(name: "CIScreenBlendMode")
+        filter?.setValue(originalImage, forKey: "inputBackgroundImage")
+        filter?.setValue(filterImage, forKey: "inputImage")
+        
+        let imageRef = (filter?.outputImage!.cropped(to: (filter?.outputImage!.extent)!))!
+        let imageWithFilter = UIImage(ciImage: imageRef, scale: image.scale, orientation: image.imageOrientation)
+        completion(imageWithFilter)
     }
 
 }
