@@ -27,7 +27,7 @@ class ImageEditorViewController: UIViewController {
                 
                 let imageFromData = UIImage(data: data!)
                 self.imagePreview.alpha = 0
-                let filterImage = UIImage(named: "oceanWaveOriginal")
+                let filterImage = UIImage(named: "nightSkyBottomLeft")
                 self.applyFilter(toImage: imageFromData!, withFilterImage: filterImage!) { filteredImage in
                     
                     self.imagePreview.image = filteredImage
