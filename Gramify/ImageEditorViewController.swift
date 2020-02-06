@@ -136,13 +136,21 @@ class ImageEditorViewController: UIViewController {
     }
     
     @objc func shareImageToImgur() {
+        shareButton.setTitle("Uploading...", for: .normal)
+        shareButton.isUserInteractionEnabled = false
         let networkProcessor = NetworkProcessor()
         let url = URL(string: "https://api.imgur.com/3/image")
         networkProcessor.uploadImage(imageToUpload, withURL: url!) { uploadedImageData in
             if let jsonData = uploadedImageData?["data"] as? [String : Any] {
                 
-                let linkString = jsonData["link"]
-                print("Link is \(linkString!)!")
+                let linkString : String = jsonData["link"] as! String
+                guard let url = URL(string: linkString) else { return }
+                
+                DispatchQueue.main.async {
+                    self.shareButton.isUserInteractionEnabled = true
+                    self.shareButton.setTitle("Share to Imgur", for: .normal)
+                    UIApplication.shared.open(url)
+                }
                 
             }
         }
