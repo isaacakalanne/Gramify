@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 class NetworkProcessor {
     
@@ -29,6 +30,7 @@ class NetworkProcessor {
                         if let data = data {
                             do {
                                 let jsonDictionary = try JSONSerialization.jsonObject(with: data, options: .mutableContainers)
+                                
                                 completion(jsonDictionary as? [String : Any])
                                 
                             } catch let error as NSError {
@@ -46,6 +48,44 @@ class NetworkProcessor {
         }
         
         dataTask.resume()
+    }
+    
+    func uploadImage(_ image : UIImage , withURL url : URL, completion: @escaping JSONDictionaryHandler) {
+        
+        let imageData : Data = image.pngData()!
+        var request = URLRequest(url: url)
+        
+        request.httpMethod = "POST"
+        request.addValue("Client-ID ab89787499de1c4", forHTTPHeaderField: "Authorization")
+        request.httpBody = imageData
+        
+        let dataTask = session.dataTask(with: request) { data, response, error in
+            
+            if error == nil {
+                if let httpResponse = response as? HTTPURLResponse {
+                    switch httpResponse.statusCode {
+                    case 200:
+                        if let data = data {
+                            do {
+                                let jsonDictionary = try JSONSerialization.jsonObject(with: data, options: .mutableContainers)
+                                completion(jsonDictionary as? [String : Any])
+                                
+                            } catch let error as NSError {
+                                print(error.localizedDescription)
+                            }
+                        }
+                    default:
+                        print("HTTP Response Code: \(httpResponse.statusCode)")
+                    }
+                }
+                
+            }
+            
+        }
+        
+        dataTask.resume()
+        
+        
     }
     
 }

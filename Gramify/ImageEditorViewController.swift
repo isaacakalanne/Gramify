@@ -81,6 +81,8 @@ class ImageEditorViewController: UIViewController {
         topLeftFadeButton.addTarget(self, action: #selector(fadeButtonpressed), for: .touchUpInside)
         topRightFadeButton.addTarget(self, action: #selector(fadeButtonpressed), for: .touchUpInside)
         bottomRightFadeButton.addTarget(self, action: #selector(fadeButtonpressed), for: .touchUpInside)
+        
+        shareButton.addTarget(self, action: #selector(shareImageToImgur), for: .touchUpInside)
     }
     
     @objc func filterButtonPressed(sender : UIButton) {
@@ -131,6 +133,19 @@ class ImageEditorViewController: UIViewController {
         let imageRef = (filter?.outputImage!.cropped(to: (filter?.outputImage!.extent)!))!
         let imageWithFilter = UIImage(ciImage: imageRef, scale: image.scale, orientation: image.imageOrientation)
         completion(imageWithFilter)
+    }
+    
+    @objc func shareImageToImgur() {
+        let networkProcessor = NetworkProcessor()
+        let url = URL(string: "https://api.imgur.com/3/image")
+        networkProcessor.uploadImage(imageToUpload, withURL: url!) { uploadedImageData in
+            if let jsonData = uploadedImageData?["data"] as? [String : Any] {
+                
+                let linkString = jsonData["link"]
+                print("Link is \(linkString!)!")
+                
+            }
+        }
     }
 
 }
