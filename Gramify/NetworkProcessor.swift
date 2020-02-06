@@ -52,12 +52,14 @@ class NetworkProcessor {
     
     func uploadImage(_ image : UIImage , withURL url : URL, completion: @escaping JSONDictionaryHandler) {
         
-        let imageData : Data = image.pngData()!
+        let imageJPEGData = image.jpegData(compressionQuality: 1)
+        let base64Data = imageJPEGData!.base64EncodedData(options: .lineLength64Characters)
+        
         var request = URLRequest(url: url)
         
         request.httpMethod = "POST"
         request.addValue("Client-ID ab89787499de1c4", forHTTPHeaderField: "Authorization")
-        request.httpBody = imageData
+        request.httpBody = base64Data
         
         let dataTask = session.dataTask(with: request) { data, response, error in
             
