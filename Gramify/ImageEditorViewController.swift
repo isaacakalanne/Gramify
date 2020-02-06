@@ -15,33 +15,98 @@ class ImageEditorViewController: UIViewController {
     @IBOutlet weak var fadeTypeScrollView: UIScrollView!
     @IBOutlet weak var shareButton: UIButton!
     
+    @IBOutlet weak var pinkRosesFilterButton: UIButton!
+    @IBOutlet weak var oceanWaveFilterButton: UIButton!
+    @IBOutlet weak var fallingLeavesFilterButton: UIButton!
+    @IBOutlet weak var nightSkyFilterButton: UIButton!
+    
+    @IBOutlet weak var bottomLeftFadeButton: UIButton!
+    @IBOutlet weak var topLeftFadeButton: UIButton!
+    @IBOutlet weak var topRightFadeButton: UIButton!
+    @IBOutlet weak var bottomRightFadeButton: UIButton!
+    
     lazy var image = ImgurImage(imageDictionary: [String : Any]())
+    var selectedFilter = "pinkRoses"
+    var originalImage = UIImage()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("Title is \(image.title ?? "")")
         
+        setIdentifiersForButtons()
+        addTargetsToButtons()
+        addImageToImagePreview()
+        
+    }
+    
+    func addImageToImagePreview() {
         getData(fromURL: image.link!) { data in
             
             DispatchQueue.main.async {
                 
-                let imageFromData = UIImage(data: data!)
+                self.originalImage = UIImage(data: data!)!
                 self.imagePreview.alpha = 0
-                let filterImage = UIImage(named: "nightSkyBottomLeft")
-                self.applyFilter(toImage: imageFromData!, withFilterImage: filterImage!) { filteredImage in
-                    
-                    self.imagePreview.image = filteredImage
-                    
-                    UIView.animate(withDuration: 0.4) {
-                        self.imagePreview.alpha = 1
-                    }
-                    
+                self.imagePreview.image = self.originalImage
+                
+                UIView.animate(withDuration: 0.4) {
+                    self.imagePreview.alpha = 1
                 }
                 
             }
             
         }
+    }
+    
+    func setIdentifiersForButtons() {
+        pinkRosesFilterButton.accessibilityIdentifier = "pinkRoses"
+        oceanWaveFilterButton.accessibilityIdentifier = "oceanWave"
+        fallingLeavesFilterButton.accessibilityIdentifier = "fallingLeaves"
+        nightSkyFilterButton.accessibilityIdentifier = "nightSky"
         
+        bottomLeftFadeButton.accessibilityIdentifier = "BottomLeft"
+        topLeftFadeButton.accessibilityIdentifier = "TopLeft"
+        topRightFadeButton.accessibilityIdentifier = "TopRight"
+        bottomRightFadeButton.accessibilityIdentifier = "BottomRight"
+    }
+    
+    func addTargetsToButtons() {
+        pinkRosesFilterButton.addTarget(self, action: #selector(filterButtonPressed), for: .touchUpInside)
+        oceanWaveFilterButton.addTarget(self, action: #selector(filterButtonPressed), for: .touchUpInside)
+        fallingLeavesFilterButton.addTarget(self, action: #selector(filterButtonPressed), for: .touchUpInside)
+        nightSkyFilterButton.addTarget(self, action: #selector(filterButtonPressed), for: .touchUpInside)
+        
+        bottomLeftFadeButton.addTarget(self, action: #selector(fadeButtonpressed), for: .touchUpInside)
+        topLeftFadeButton.addTarget(self, action: #selector(fadeButtonpressed), for: .touchUpInside)
+        topRightFadeButton.addTarget(self, action: #selector(fadeButtonpressed), for: .touchUpInside)
+        bottomRightFadeButton.addTarget(self, action: #selector(fadeButtonpressed), for: .touchUpInside)
+    }
+    
+    @objc func filterButtonPressed(sender : UIButton) {
+        if selectedFilter != sender.accessibilityIdentifier {
+            selectedFilter = sender.accessibilityIdentifier!
+            setFadeBackground(forButton: bottomLeftFadeButton, withFilter: selectedFilter)
+            setFadeBackground(forButton: topLeftFadeButton, withFilter: selectedFilter)
+            setFadeBackground(forButton: topRightFadeButton, withFilter: selectedFilter)
+            setFadeBackground(forButton: bottomRightFadeButton, withFilter: selectedFilter)
+            print("Changing fade images!")
+        }
+    }
+    
+    @objc func fadeButtonpressed(sender : UIButton) {
+        let fadeDirection = sender.accessibilityIdentifier!
+        let filterName = "\(selectedFilter + fadeDirection)"
+        let filterImage = UIImage(named: filterName)
+        self.applyFilter(toImage: self.originalImage, withFilterImage: filterImage!) { filteredImage in
+            
+            UIView.animate(withDuration: 0.4) {
+                self.imagePreview.image = filteredImage // This doesn't currently correctly animate the transition
+            }
+            
+        }
+    }
+    
+    func setFadeBackground(forButton button : UIButton , withFilter filterName : String) {
+        let imageName = "\(filterName + button.accessibilityIdentifier!)"
+        button.setBackgroundImage(UIImage(named: imageName), for: .normal)
     }
     
     func getData(fromURL urlString:String, completion: @escaping ((_ data: Data?) -> Void)) {

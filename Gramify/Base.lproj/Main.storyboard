@@ -333,10 +333,18 @@
                     </view>
                     <navigationItem key="navigationItem" title="Editor" id="QB3-TM-bNY"/>
                     <connections>
+                        <outlet property="bottomLeftFadeButton" destination="9YZ-Yl-lyQ" id="PGf-UV-Yx2"/>
+                        <outlet property="bottomRightFadeButton" destination="NTk-9s-ZuP" id="o5k-pB-qS8"/>
                         <outlet property="fadeTypeScrollView" destination="OQf-dj-zNv" id="zOm-Jc-rPn"/>
+                        <outlet property="fallingLeavesFilterButton" destination="Nad-FN-d1M" id="c5E-E3-yJD"/>
                         <outlet property="filtersScrollView" destination="u1h-F9-67g" id="ttr-zo-xv0"/>
                         <outlet property="imagePreview" destination="7FK-ei-WP6" id="dwf-eV-Ijw"/>
+                        <outlet property="nightSkyFilterButton" destination="jaH-cn-NJc" id="AZx-pW-4p4"/>
+                        <outlet property="oceanWaveFilterButton" destination="tZk-e1-0G9" id="gPO-am-neq"/>
+                        <outlet property="pinkRosesFilterButton" destination="BZW-df-4Y5" id="NMn-e9-bkc"/>
                         <outlet property="shareButton" destination="s39-ws-MvP" id="YsL-zn-kdF"/>
+                        <outlet property="topLeftFadeButton" destination="lsp-rn-bEa" id="rkk-pl-2zb"/>
+                        <outlet property="topRightFadeButton" destination="nyA-Mh-F5U" id="aA0-pm-Mxy"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eM0-kc-yhe" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
