@@ -28,6 +28,7 @@ class ImageEditorViewController: UIViewController {
     lazy var image = ImgurImage(imageDictionary: [String : Any]())
     var selectedFilter = "pinkRoses"
     var originalImage = UIImage()
+    var imageToUpload = UIImage()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -44,6 +45,8 @@ class ImageEditorViewController: UIViewController {
             DispatchQueue.main.async {
                 
                 self.originalImage = UIImage(data: data!)!
+                self.imageToUpload = self.originalImage
+                
                 self.imagePreview.alpha = 0
                 self.imagePreview.image = self.originalImage
                 
@@ -99,6 +102,7 @@ class ImageEditorViewController: UIViewController {
             
             UIView.animate(withDuration: 0.4) {
                 self.imagePreview.image = filteredImage // This doesn't currently correctly animate the transition
+                self.imageToUpload = filteredImage
             }
             
         }
